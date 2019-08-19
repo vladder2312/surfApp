@@ -6,7 +6,7 @@
         android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".First" android:background="#23213F">
+        tools:context=".Splash" android:background="@color/colorBackground">
     <ImageView
             android:layout_width="91dp"
             android:layout_height="104.6dp" app:srcCompat="@drawable/surf_logo"
