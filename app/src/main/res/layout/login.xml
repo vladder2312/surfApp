@@ -1,5 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                                   xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent" android:background="@color/colorBackground"/>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorBackground">
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="288dp">
+        <EditText
+                android:inputType="phone"
+                android:id="@+id/loginText" android:layout_marginTop="80dp"
+                android:hint="  Логин"
+                style="@style/textField" android:textColorLink="#00FFFFFF"/>
+        <TextView
+                android:text="TextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/loginLabel" android:textColor="#00FF0000"
+                android:layout_marginLeft="16dp" android:layout_marginRight="16dp"/>
+        <EditText
+                android:inputType="numberPassword"
+                android:id="@+id/passwordText" android:layout_marginTop="55dp"
+                android:hint="  Пароль"
+                style="@style/textField"/>
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/passwordLabel"
+                android:textColor="@android:color/white"
+                android:layout_marginLeft="16dp" android:layout_marginRight="16dp"/>
+
+    </LinearLayout>
+    <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="300dp" android:layout_marginTop="140dp">
+        <Button
+                android:text="Войти"
+                android:id="@+id/loginButton"
+                android:layout_marginTop="170dp" style="@style/button"/>
+        <ProgressBar
+                style="@style/Widget.AppCompat.ProgressBar"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:id="@+id/loader" android:layout_marginTop="170dp" android:translationZ="2dp"
+                android:visibility="invisible"/>
+    </FrameLayout>
+</LinearLayout>
