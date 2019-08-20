@@ -1,5 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                                   xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent" android:background="@color/colorBackground"/>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorBackground">
+    <EditText
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:inputType="phone"
+            android:ems="10"
+            android:id="@+id/loginText" android:layout_marginTop="80dp" android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp" android:textColor="@android:color/white"
+            android:textColorHint="@color/colorTextFieldGrayText" android:hint="Логин"/>
+    <TextView
+            android:text="TextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:id="@+id/loginLabel" android:textColor="#00FF0000"
+            android:layout_marginLeft="16dp" android:layout_marginRight="16dp"/>
+    <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberPassword"
+            android:ems="10"
+            android:id="@+id/passwordText" android:layout_marginTop="55dp" android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp" android:hint="Пароль" android:textColor="@android:color/white"
+            android:textColorHint="@color/colorTextFieldGrayText" android:selectAllOnFocus="false"/>
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:id="@+id/passwordLabel"
+            android:textColor="@android:color/white"
+            android:layout_marginLeft="16dp" android:layout_marginRight="16dp"/>
+    <Button
+            android:text="Войти"
+            android:layout_width="match_parent"
+            android:layout_height="55dp" android:id="@+id/loginButton"
+            android:layout_marginLeft="16dp" android:layout_marginRight="16dp"
+            android:background="@color/colorButton" android:layout_marginTop="200dp"/>
+</LinearLayout>

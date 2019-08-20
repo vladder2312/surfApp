@@ -10,8 +10,6 @@ class Splash : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.splash)
-        setVisible(true)
-        supportActionBar?.hide()
         showNextActivity()
     }
 
@@ -20,6 +18,11 @@ class Splash : AppCompatActivity() {
         Timer().schedule(object : TimerTask(){
                 override fun run() { startActivity(loginIntent) }
             }, 300 )
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        showNextActivity()
     }
 
 }

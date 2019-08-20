@@ -4,4 +4,7 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="colorBackground">#23213F</color>
+    <color name="colorBackgroundTextField">#2E2C49</color>
+    <color name="colorTextFieldGrayText">#9E9DAA</color>
+    <color name="colorButton">#1EEFD6</color>
 </resources>
