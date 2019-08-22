@@ -1,21 +1,21 @@
 package com.example.myapplication
 
-import android.content.res.ColorStateList
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
-import kotlinx.android.synthetic.main.login.*
+import kotlinx.android.synthetic.main.activity_login.*
 import java.util.*
 
-class Login : AppCompatActivity() {
+class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.login)
-        window.decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
+        setContentView(R.layout.activity_login)
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
         window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
+
         passwordText.onFocusChangeListener = View.OnFocusChangeListener { v, hasFocus ->
             if (hasFocus) {
                 passwordLabel.setTextColor(Color.WHITE)
@@ -31,6 +31,7 @@ class Login : AppCompatActivity() {
                 }
             }
         }
+
         loginText.onFocusChangeListener = View.OnFocusChangeListener{ v, hasFocus ->
             if (hasFocus){
                 loginLabel.text=""
@@ -44,7 +45,8 @@ class Login : AppCompatActivity() {
                 }
             }
         }
-        loginButton.setOnClickListener { //Progress bar за кнопкой
+
+        loginButton.setOnClickListener {
             loader.visibility = View.VISIBLE
             loginButton.text = ""
             Timer().schedule(object : TimerTask(){
@@ -52,12 +54,10 @@ class Login : AppCompatActivity() {
                     loader.visibility = View.INVISIBLE
                     loginButton.text = "Войти"
                 }
-            }, 3000)
+            }, 2000)
+
         }
+
+        
     }
 }
-
-/*
-TODO 1. Progress bar сделать чёрным
-TODO 2.
-*/
