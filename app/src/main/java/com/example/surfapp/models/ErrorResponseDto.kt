@@ -1,13 +1,13 @@
-package com.example.myapplication.Models
+package com.example.surfapp.models
 
 import com.google.gson.annotations.SerializedName
 
-class ErrorResponseDto {
+data class ErrorResponseDto (
 
     @SerializedName("code")
-    var code = ""
+    val code : String,
 
     @SerializedName("errorMessage")
-    var errorMessage = ""
+    val errorMessage : String
 
-}
+)

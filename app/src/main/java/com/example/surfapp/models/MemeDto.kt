@@ -1,25 +1,25 @@
-package com.example.myapplication.Models
+package com.example.surfapp.models
 
 import com.google.gson.annotations.SerializedName
 
-class MemeDto {
+data class MemeDto (
 
     @SerializedName("id")
-    var id = 0
+    val id : Integer,
 
     @SerializedName("title")
-    var title = ""
+    val title : String,
 
     @SerializedName("description")
-    var description = ""
+    val description : String,
 
     @SerializedName("isFavorite")
-    var isFavorite = false
+    val isFavorite : Boolean,
 
     @SerializedName("createdDate")
-    var createdDate = 0
+    val createdDate : String,
 
     @SerializedName("photoUrl")
-    var photoUtl = ""
+    val photoUtl : String
 
-}
+)

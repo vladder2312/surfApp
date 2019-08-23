@@ -1,13 +1,13 @@
-package com.example.myapplication.Models
+package com.example.surfapp.models
 
 import com.google.gson.annotations.SerializedName
 
-class AuthInfoDto {
+class AuthInfoDto (
 
     @SerializedName("accessToken")
-    var accessToken = ""
+    val accessToken : String,
 
     @SerializedName("userInfo")
-    var userInfo: UserInfo? = null
+    val userInfo: UserInfo
 
-}
+)

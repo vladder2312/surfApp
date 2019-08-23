@@ -7,11 +7,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".Splash" android:background="@color/colorBackground">
+
     <ImageView
             android:layout_width="91dp"
-            android:layout_height="104.6dp" app:srcCompat="@drawable/surf_logo"
-            android:id="@+id/surfLogo" app:layout_constraintTop_toTopOf="parent"
+            android:layout_height="104.6dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="312dp"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"/>
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/surflogo" />
 </androidx.constraintlayout.widget.ConstraintLayout>

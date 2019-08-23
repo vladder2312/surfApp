@@ -1,13 +1,13 @@
-package com.example.myapplication.Models
+package com.example.surfapp.models
 
 import com.google.gson.annotations.SerializedName
 
-class LoginUserRequestDto {
+data class LoginUserRequestDto (
 
     @SerializedName("login")
-    var login = ""
+    val login : String,
 
     @SerializedName("password")
-    var password = ""
+    val password : String
 
-}
+)

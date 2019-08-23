@@ -1,22 +1,22 @@
-package com.example.myapplication.Models
+package com.example.surfapp.models
 
 import com.google.gson.annotations.SerializedName
 
-class UserInfo {
+data class UserInfo(
 
     @SerializedName("id")
-    var id = 0
+    val id : Integer,
 
     @SerializedName("username")
-    var username = ""
+    val username : String,
 
     @SerializedName("firstName")
-    var firstName = ""
+    val firstName : String,
 
     @SerializedName("lastName")
-    var lastName = ""
+    val lastName : String,
 
     @SerializedName("userDescription")
-    var userDescription = ""
+    val userDescription : String
 
-}
+)
