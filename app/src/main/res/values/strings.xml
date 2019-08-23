@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">SurfApp</string>
+    <string name="main_title">Популярные мемы</string>
 </resources>
