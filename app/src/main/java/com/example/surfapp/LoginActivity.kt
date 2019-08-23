@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -54,10 +55,11 @@ class LoginActivity : AppCompatActivity() {
                     loader.visibility = View.INVISIBLE
                     loginButton.text = "Войти"
                 }
-            }, 2000)
-
+            }, 3000)
+            var mainIntent = Intent(this, MainActivity::class.java)
+            startActivity(mainIntent)
         }
 
-        
+
     }
 }
