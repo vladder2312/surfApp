@@ -8,63 +8,39 @@
         android:orientation="vertical">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/topBar"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:layout_alignParentTop="true"
-            android:background="@color/colorBackgroundLighter"
-            app:layout_constraintTop_toTopOf="parent">
-
-        <SearchView
-                android:id="@+id/searchView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:goIcon="@android:drawable/ic_menu_search"
-                android:gravity="center"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+        android:id="@+id/topBar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@color/colorBackgroundLighter"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-                android:id="@+id/titleText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:fontFamily="@font/roboto"
-                android:gravity="center|start"
-                android:text="@string/main_title"
-                android:textColor="@android:color/white"
-                android:textSize="20sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/roboto"
+            android:text="@string/main_title"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
+        <SearchView
+            android:id="@+id/search"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_marginEnd="19dp"
+            android:searchIcon="@drawable/search_icon"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <fragment
-            android:id="@+id/feedFragment"
-            android:name="com.example.surfapp.fragments.FeedFragment"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@+id/botBar"
-            app:layout_constraintTop_toBottomOf="@+id/topBar"/>
-
-    <fragment
-            android:id="@+id/addMemeFragment"
-            android:name="com.example.surfapp.fragments.AddMemeFragment"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@+id/botBar"
-            app:layout_constraintTop_toBottomOf="@+id/topBar"/>
-
-    <fragment
-            android:id="@+id/profileFragment"
-            android:name="com.example.surfapp.fragments.ProfileFragment"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@+id/botBar"
-            app:layout_constraintTop_toBottomOf="@+id/topBar" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/botBar"
