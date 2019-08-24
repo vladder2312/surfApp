@@ -7,74 +7,43 @@
         android:background="@color/colorBackground"
         android:orientation="vertical">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/topBar"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        style="@style/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_height="wrap_content"
         android:background="@color/colorBackgroundLighter"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:menu="@menu/toolbar_menu"
+        app:title="@string/main_title"
+        app:titleTextColor="@android:color/white" />
 
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
-            android:fontFamily="@font/roboto"
-            android:text="@string/main_title"
-            android:textColor="@android:color/white"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:id="@+id/fragmentHolder"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"></LinearLayout>
 
-        <SearchView
-            android:id="@+id/search"
-            android:layout_width="18dp"
-            android:layout_height="18dp"
-            android:layout_marginEnd="19dp"
-            android:searchIcon="@drawable/search_icon"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        style="@style/Widget.Design.BottomNavigationView"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:background="@drawable/bottom_bar"
+        app:itemIconTint="@drawable/nav_item_color_state"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_navigation_main">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/botBar"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:background="@drawable/bottom_bar"
-            app:layout_constraintBottom_toBottomOf="parent">
-        <View
-                android:id="@+id/feed"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginStart="54dp"
-                android:background="@drawable/feed_inactive"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        <View
-                android:id="@+id/newPost"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:background="@drawable/addmeme"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/profile"
-                app:layout_constraintStart_toEndOf="@+id/feed"
-                app:layout_constraintTop_toTopOf="parent" />
-        <View
-                android:id="@+id/profile"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginEnd="54dp"
-                android:background="@drawable/profile_inactive"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

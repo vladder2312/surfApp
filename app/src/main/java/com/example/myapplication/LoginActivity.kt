@@ -6,6 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
+import androidx.core.content.ContextCompat.startActivity
 import com.example.myapplication.models.AuthInfoDto
 import com.example.myapplication.models.LoginUserRequestDto
 import com.example.myapplication.retrofit.RetrofitClient
@@ -13,6 +16,7 @@ import kotlinx.android.synthetic.main.activity_login.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.*
 
 class LoginActivity : AppCompatActivity(), Callback<AuthInfoDto> {
 
@@ -25,17 +29,9 @@ class LoginActivity : AppCompatActivity(), Callback<AuthInfoDto> {
         )
         passwordText.onFocusChangeListener = View.OnFocusChangeListener { v, hasFocus ->
             if (hasFocus) {
-                passwordLabel.setTextColor(Color.WHITE)
-                passwordLabel.text = "Пароль должен содержать 6 символов"
+                passwordLabel.text = ""
             } else {
-                passwordLabel.setTextColor(Color.RED)
-                if (passwordText.text.isEmpty()) {
-                    passwordLabel.text = "Поле не может быть пустым"
-                }
-                if (passwordText.text.length == 6) {
-                    passwordLabel.text = ""
-                    passwordLabel.setTextColor(Color.WHITE)
-                }
+
             }
         }
 
@@ -43,13 +39,7 @@ class LoginActivity : AppCompatActivity(), Callback<AuthInfoDto> {
             if (hasFocus) {
                 loginLabel.text = ""
             } else {
-                if (loginText.text.isEmpty()) {
-                    loginLabel.setTextColor(Color.RED)
-                    loginLabel.text = "Поле не может быть пустым"
-                } else {
-                    loginLabel.text = ""
-                    loginLabel.setTextColor(Color.WHITE)
-                }
+                checkFields()
             }
         }
 
@@ -65,6 +55,8 @@ class LoginActivity : AppCompatActivity(), Callback<AuthInfoDto> {
                         )
                     )
                 call.enqueue(this)
+            } else {
+                checkFields()
             }
         }
     }
@@ -74,6 +66,22 @@ class LoginActivity : AppCompatActivity(), Callback<AuthInfoDto> {
         println("here")
         loader.visibility = View.INVISIBLE
         loginButton.text = "Войти"
+        showError()
+    }
+
+    private fun checkFields() {
+        if (loginText.text.isEmpty()) {
+            loginLabel.text = "Поле не может быть пустым"
+        } else {
+            loginLabel.text = ""
+        }
+        if (passwordText.text.isEmpty()) {
+            passwordLabel.text = "Поле не может быть пустым"
+        } else if (passwordText.text.length != 6) {
+            passwordLabel.text = "Пароль должен содержать 6 символов"
+        } else {
+            passwordLabel.text = ""
+        }
     }
 
     override fun onResponse(
@@ -83,10 +91,23 @@ class LoginActivity : AppCompatActivity(), Callback<AuthInfoDto> {
         if (response.isSuccessful) {
             var authInfo = response.body()
             println("1:" + authInfo.toString())
+            loader.visibility = View.INVISIBLE
+            loginButton.text = "Войти"
             var mainIntent = Intent(this, MainActivity::class.java)
             startActivity(mainIntent)
         } else {
             println("2:" + response.errorBody())
         }
+    }
+
+    fun showError() {
+        val show = AnimationUtils.loadAnimation(applicationContext,R.anim.error_show)
+        val hide = AnimationUtils.loadAnimation(applicationContext,R.anim.error_hide)
+        errorMessage.startAnimation(show)
+        Timer().schedule(object : TimerTask(){
+            override fun run() {
+                errorMessage.startAnimation(hide)
+            }
+        },2000)
     }
 }
