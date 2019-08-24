@@ -23,12 +23,12 @@
                 android:textColorLink="#00FFFFFF" />
 
         <TextView
-                android:id="@+id/loginLabel"
-                android:layout_width="match_parent"
-                android:layout_height="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:textColor="@android:color/white" />
+            android:id="@+id/loginLabel"
+            android:layout_width="match_parent"
+            android:layout_height="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:textColor="@android:color/holo_red_light" />
 
         <EditText
                 android:id="@+id/passwordText"
@@ -38,12 +38,12 @@
                 android:inputType="numberPassword" />
 
         <TextView
-                android:id="@+id/passwordLabel"
-                android:layout_width="match_parent"
-                android:layout_height="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:textColor="@android:color/white" />
+            android:id="@+id/passwordLabel"
+            android:layout_width="match_parent"
+            android:layout_height="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:textColor="@android:color/holo_red_light" />
 
     </LinearLayout>
 
@@ -67,4 +67,14 @@
                 android:translationZ="2dp"
                 android:visibility="invisible" />
     </FrameLayout>
+
+    <SurfaceView
+        android:id="@+id/errorMessage"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        android:background="#FF575D"
+        android:translationY="80dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

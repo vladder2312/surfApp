@@ -1,4 +1,4 @@
-package com.example.surfapp
+package com.example.myapplication
 
 import org.junit.Test
 

@@ -1,9 +1,9 @@
-package com.example.surfapp.retrofit
+package com.example.myapplication.retrofit
 
-import com.example.surfapp.models.AuthInfoDto
-import com.example.surfapp.models.ErrorResponseDto
-import com.example.surfapp.models.LoginUserRequestDto
-import com.example.surfapp.models.MemeDto
+import com.example.myapplication.models.AuthInfoDto
+import com.example.myapplication.models.ErrorResponseDto
+import com.example.myapplication.models.LoginUserRequestDto
+import com.example.myapplication.models.MemeDto
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
