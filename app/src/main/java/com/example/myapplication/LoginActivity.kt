@@ -31,7 +31,7 @@ class LoginActivity : AppCompatActivity(), Callback<AuthInfoDto> {
             if (hasFocus) {
                 passwordLabel.text = ""
             } else {
-
+                checkFields()
             }
         }
 

@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 data class MemeDto (
 
     @SerializedName("id")
-    val id : Integer,
+    val id : Long,
 
     @SerializedName("title")
     val title : String,
