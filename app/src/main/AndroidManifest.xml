@@ -11,15 +11,15 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             android:largeHeap="true">
-        <activity android:name="com.example.myapplication.SplashActivity">
+        <activity android:name="com.example.myapplication.ui.activities.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name="com.example.myapplication.LoginActivity"></activity>
-        <activity android:name="com.example.myapplication.MainActivity"></activity>
+        <activity android:name="com.example.myapplication.ui.activities.LoginActivity"></activity>
+        <activity android:name="com.example.myapplication.ui.activities.MainActivity"></activity>
 
         <meta-data
                 android:name="preloaded_fonts"
