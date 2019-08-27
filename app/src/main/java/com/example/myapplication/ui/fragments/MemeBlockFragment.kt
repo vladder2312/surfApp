@@ -8,6 +8,12 @@ import androidx.fragment.app.Fragment
 import com.example.myapplication.R
 
 class MemeBlockFragment : Fragment() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        retainInstance=true
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

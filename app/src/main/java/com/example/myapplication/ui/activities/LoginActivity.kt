@@ -23,6 +23,7 @@ class LoginActivity : AppCompatActivity(), Callback<AuthInfoDto> {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
         passwordText.onFocusChangeListener = View.OnFocusChangeListener { v, hasFocus ->
             if (hasFocus) {
                 passwordLabel.text = ""
@@ -30,7 +31,6 @@ class LoginActivity : AppCompatActivity(), Callback<AuthInfoDto> {
                 validateFields()
             }
         }
-
         loginText.onFocusChangeListener = View.OnFocusChangeListener { v, hasFocus ->
             if (hasFocus) {
                 loginLabel.text = ""
@@ -38,7 +38,6 @@ class LoginActivity : AppCompatActivity(), Callback<AuthInfoDto> {
                 validateFields()
             }
         }
-
         loginButton.setOnClickListener {
             if (loginText.text.isNotEmpty() && passwordText.text.isNotEmpty() && passwordText.text.length == 6) {
                 authorize()
