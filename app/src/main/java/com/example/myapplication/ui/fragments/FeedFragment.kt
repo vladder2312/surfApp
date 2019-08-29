@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.myapplication.R
 import com.example.myapplication.adapters.MemeAdapter
@@ -29,8 +28,7 @@ class FeedFragment : Fragment(), Callback<List<MemeDto>> {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        var view = inflater.inflate(R.layout.fragment_feed, container, false)
-        return view
+        return inflater.inflate(R.layout.fragment_feed, container, false)
     }
 
     override fun onResume() {

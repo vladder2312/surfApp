@@ -2,7 +2,6 @@ package com.example.myapplication.ui.activities
 
 import android.os.Bundle
 import android.view.Menu
-import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.R
 import com.example.myapplication.ui.fragments.AddMemeFragment
@@ -48,7 +47,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.toolbar_menu, menu)
+        menuInflater.inflate(R.menu.main_toolbar_menu, menu)
         return true
     }
 

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/avatar"
+        android:title=""
+        android:icon="@drawable/avatar" />
+    <item
+        android:id="@+id/nickname"
+        android:title="@string/nickname"
+        app:actionViewClass="android.widget.TextView"
+        app:showAsAction="always|collapseActionView"/>
+    <item
+        android:id="@+id/share"
+        android:title=""
+        android:icon="@drawable/icon_share"
+        app:showAsAction="always|collapseActionView"
+        app:actionViewClass="android.widget.ImageView" />
+</menu>
