@@ -1,14 +1,13 @@
-package com.example.myapplication
+package com.example.myapplication.ui.activities
 
 import android.os.Bundle
 import android.view.Menu
-import android.view.MenuItem
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
-import com.example.myapplication.fragments.AddMemeFragment
-import com.example.myapplication.fragments.FeedFragment
-import com.example.myapplication.fragments.ProfileFragment
+import com.example.myapplication.R
+import com.example.myapplication.ui.fragments.AddMemeFragment
+import com.example.myapplication.ui.fragments.FeedFragment
+import com.example.myapplication.ui.fragments.ProfileFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -17,7 +16,6 @@ class MainActivity : AppCompatActivity() {
     private val feed = FeedFragment()
     private val add = AddMemeFragment()
     private val profile = ProfileFragment()
-
     private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         val transaction = supportFragmentManager.beginTransaction()
         when(item.itemId){
@@ -41,7 +39,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
         setSupportActionBar(toolbar)
         supportActionBar?.title = "Популярные мемы"
         bottom_navigation.setOnNavigationItemSelectedListener (onNavigationItemSelectedListener)

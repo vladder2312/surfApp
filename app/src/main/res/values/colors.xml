@@ -8,4 +8,5 @@
     <color name="colorBackgroundDarker">#12102B</color>
     <color name="colorTextFieldGrayText">#9E9DAA</color>
     <color name="colorBlue">#1EEFD6</color>
+    <color name="snackbg">#FF575D</color>
 </resources>
