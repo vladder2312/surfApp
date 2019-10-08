@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity() {
         when(item.itemId){
             R.id.action_feed -> {
                 transaction.replace(R.id.fragmentHolder,feed)
+                setSupportActionBar(mainToolbar)
                 item.isChecked = true
             }
             R.id.action_addMeme -> {
@@ -41,7 +42,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         mainToolbar.title=""
-        setSupportActionBar(mainToolbar)
         bottom_navigation.setOnNavigationItemSelectedListener (onNavigationItemSelectedListener)
         val transaction = supportFragmentManager.beginTransaction()
         transaction.add(R.id.fragmentHolder,feed)
