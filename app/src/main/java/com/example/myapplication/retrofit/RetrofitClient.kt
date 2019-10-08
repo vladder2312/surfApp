@@ -12,7 +12,7 @@ object RetrofitClient {
     var gson = GsonBuilder().create()
 
     var retrofit: Retrofit = Retrofit.Builder()
-        .baseUrl("http://demo3161256.mockable.io")
+        .baseUrl("https://demo3161256.mockable.io")
         .addConverterFactory(GsonConverterFactory.create(gson))
         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
         .build()

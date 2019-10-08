@@ -7,5 +7,5 @@ data class MemeDto (
     @SerializedName("description") val description : String,
     @SerializedName("isFavorite") val isFavorite : Boolean,
     @SerializedName("createdDate") val createdDate : String,
-    @SerializedName("photoUrl") val photoUtl : String
+    @SerializedName("photoUtl") val photoUtl : String
 )
