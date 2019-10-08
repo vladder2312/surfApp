@@ -2,8 +2,9 @@ package com.example.myapplication.ui.activities
 
 import android.os.Bundle
 import android.view.Menu
-import android.view.WindowManager
+import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.MenuItemCompat
 import com.example.myapplication.R
 import com.example.myapplication.ui.fragments.AddMemeFragment
 import com.example.myapplication.ui.fragments.FeedFragment
@@ -39,17 +40,17 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        setSupportActionBar(toolbar)
-        supportActionBar?.title = "Популярные мемы"
+        mainToolbar.title=""
+        setSupportActionBar(mainToolbar)
         bottom_navigation.setOnNavigationItemSelectedListener (onNavigationItemSelectedListener)
         val transaction = supportFragmentManager.beginTransaction()
         transaction.add(R.id.fragmentHolder,feed)
         transaction.commit()
-    }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.toolbar_menu, menu)
-        return true
+        search.setOnSearchClickListener {
+            mainTitle.text=""
+        }
+
     }
 
 }
