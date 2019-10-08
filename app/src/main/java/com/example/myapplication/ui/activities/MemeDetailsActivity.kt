@@ -1,29 +1,42 @@
 package com.example.myapplication.ui.activities
 
 import android.os.Bundle
-import android.os.PersistableBundle
-import android.view.Menu
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.R
-import com.example.myapplication.retrofit.RetrofitClient
-import kotlinx.android.synthetic.main.activity_main.*
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_meme_details.*
+
 
 class MemeDetailsActivity : AppCompatActivity() {
 
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        super.onCreate(savedInstanceState, persistentState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_meme_details)
+        mdToolbar.title=""
         setSupportActionBar(mdToolbar)
         loadMeme()
-    }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.meme_toolbar_menu, menu)
-        return true
+        close_meme_btn.setOnClickListener {
+            super.finish()
+        }
+
+        authorLogo.setOnClickListener {
+            // TODO("Открыть профиль")
+        }
+
+        authorNick.setOnClickListener {
+            //TODO("Открыть профиль")
+        }
+
+        shareDetailMeme.setOnClickListener {
+            //TODO("Поделиться мемом")
+        }
     }
 
     private fun loadMeme(){
-
+        titleFullMeme.text = intent.getStringExtra("title")
+        descriptionFullMeme.text = intent.getStringExtra("description")
+        Picasso.get().load(intent.getStringExtra("imageUtl")).into(imageFullMeme)
+        dateFullMeme.text = intent.getStringExtra("createdDate")
     }
 }
