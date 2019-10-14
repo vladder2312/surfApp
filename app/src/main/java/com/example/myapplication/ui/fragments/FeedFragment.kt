@@ -4,12 +4,9 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.example.myapplication.R
 import com.example.myapplication.adapters.ChangeListener
 import com.example.myapplication.adapters.MemeAdapter
 import com.example.myapplication.models.MemeDto
@@ -21,6 +18,10 @@ import kotlinx.android.synthetic.main.fragment_feed.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
+import com.example.myapplication.R
+
 
 class FeedFragment : Fragment(), Callback<List<MemeDto>>, ChangeListener {
 
@@ -40,11 +41,20 @@ class FeedFragment : Fragment(), Callback<List<MemeDto>>, ChangeListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
         retainInstance = true
     }
 
+    //TODO("Не появляется toolbar")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_feed, container, false)
+        retainInstance=true
+
+        val view = inflater.inflate(R.layout.fragment_feed, container, false)
+        val toolbar = view.findViewById(R.id.mainToolbar) as? Toolbar
+        val activity = activity as AppCompatActivity?
+        activity!!.setSupportActionBar(toolbar)
+        val actionBar = activity.supportActionBar
+        return view
     }
 
     override fun onResume() {
@@ -77,14 +87,12 @@ class FeedFragment : Fragment(), Callback<List<MemeDto>>, ChangeListener {
     override fun onResponse(call: Call<List<MemeDto>>, response: Response<List<MemeDto>>) {
         val memes = response.body()
         error.visibility=View.INVISIBLE
-        for(meme in memes.orEmpty()){
-            println(meme.toString())
-        }
         if (memes != null) {
             initRecyclerView(memes)
         }
     }
 
+    //TODO("Тут крашится")
     private fun showSnackBar(){
         val snackBar = Snackbar.make(loginLayout, R.string.connection_error, Snackbar.LENGTH_SHORT)
         snackBar.view.setBackgroundColor(resources.getColor(R.color.snackbg))

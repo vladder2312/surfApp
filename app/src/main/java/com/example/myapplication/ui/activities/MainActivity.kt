@@ -3,7 +3,9 @@ package com.example.myapplication.ui.activities
 import android.os.Bundle
 import android.view.Menu
 import android.widget.SearchView
+import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.core.view.MenuItemCompat
 import com.example.myapplication.R
 import com.example.myapplication.ui.fragments.AddMemeFragment
@@ -14,9 +16,14 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var mainToolbar : Toolbar
+    private lateinit var addMemeToolbar : Toolbar
+    private lateinit var profileToolbar : Toolbar
+
     private val feed = FeedFragment()
     private val add = AddMemeFragment()
     private val profile = ProfileFragment()
+
     private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         val transaction = supportFragmentManager.beginTransaction()
         when(item.itemId){
@@ -40,17 +47,12 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        mainToolbar.title=""
+        mainToolbar = findViewById(R.id.mainToolbar)
         setSupportActionBar(mainToolbar)
         bottom_navigation.setOnNavigationItemSelectedListener (onNavigationItemSelectedListener)
         val transaction = supportFragmentManager.beginTransaction()
         transaction.add(R.id.fragmentHolder,feed)
         transaction.commit()
-
-        search.setOnSearchClickListener {
-            mainTitle.text=""
-        }
-
     }
 
 }
