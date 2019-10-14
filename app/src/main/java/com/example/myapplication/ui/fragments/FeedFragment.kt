@@ -38,8 +38,6 @@ class FeedFragment : Fragment(), Callback<List<MemeDto>>, ChangeListener {
     }
 
     lateinit var memeAdapter : MemeAdapter
-    lateinit var rootView : View
-    lateinit var toolbar : Toolbar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,8 +45,10 @@ class FeedFragment : Fragment(), Callback<List<MemeDto>>, ChangeListener {
         retainInstance = true
     }
 
+    //TODO("Не появляется toolbar")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         retainInstance=true
+
         val view = inflater.inflate(R.layout.fragment_feed, container, false)
         val toolbar = view.findViewById(R.id.mainToolbar) as? Toolbar
         val activity = activity as AppCompatActivity?
@@ -92,9 +92,10 @@ class FeedFragment : Fragment(), Callback<List<MemeDto>>, ChangeListener {
         }
     }
 
+    //TODO("Тут крашится")
     private fun showSnackBar(){
-        val snackBar = Snackbar.make(loginLayout, com.example.myapplication.R.string.connection_error, Snackbar.LENGTH_SHORT)
-        snackBar.view.setBackgroundColor(resources.getColor(com.example.myapplication.R.color.snackbg))
+        val snackBar = Snackbar.make(loginLayout, R.string.connection_error, Snackbar.LENGTH_SHORT)
+        snackBar.view.setBackgroundColor(resources.getColor(R.color.snackbg))
         snackBar.setActionTextColor(Color.WHITE)
         snackBar.show()
     }

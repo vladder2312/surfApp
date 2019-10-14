@@ -1,12 +1,12 @@
 package com.example.myapplication.ui.activities
 
-import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.view.animation.AnimationUtils
 import com.example.myapplication.R
 import com.example.myapplication.models.AuthInfoDto
 import com.example.myapplication.models.LoginUserRequestDto
@@ -16,9 +16,11 @@ import kotlinx.android.synthetic.main.activity_login.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.util.*
 
 class LoginActivity : AppCompatActivity(), Callback<AuthInfoDto> {
+
+    private lateinit var userData : SharedPreferences
+    private val USERFILENAME = "UserData"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -86,6 +88,8 @@ class LoginActivity : AppCompatActivity(), Callback<AuthInfoDto> {
         if (response.isSuccessful) {
             var authInfo = response.body()
             println("1:" + authInfo.toString())
+            saveUser(authInfo)
+
             loader.visibility = View.INVISIBLE
             loginButton.text = "Войти"
             var mainIntent = Intent(this, MainActivity::class.java)
@@ -93,6 +97,18 @@ class LoginActivity : AppCompatActivity(), Callback<AuthInfoDto> {
         } else {
             println("2:" + response.errorBody())
         }
+    }
+
+    private fun saveUser(authInfo: AuthInfoDto?){
+        userData = getSharedPreferences(USERFILENAME, Context.MODE_PRIVATE)
+        val editor = userData.edit()
+        editor.putString("AccessToken",authInfo!!.accessToken)
+        editor.putInt("UserID", authInfo.userInfo.id.toInt())
+        editor.putString("UserName", authInfo.userInfo.username)
+        editor.putString("UserFirstName", authInfo.userInfo.firstName)
+        editor.putString("UserLastName", authInfo.userInfo.lastName)
+        editor.putString("UserDescription",authInfo.userInfo.userDescription)
+        editor.apply()
     }
 
     private fun showSnackbar() {
