@@ -20,6 +20,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.myapplication.R
 
 
@@ -45,7 +46,7 @@ class FeedFragment : Fragment(), Callback<List<MemeDto>>, ChangeListener {
         retainInstance = true
     }
 
-    //TODO("Не появляется toolbar")
+    //TODO("Тулбары не работают")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         retainInstance=true
 
@@ -55,6 +56,14 @@ class FeedFragment : Fragment(), Callback<List<MemeDto>>, ChangeListener {
         activity!!.setSupportActionBar(toolbar)
         val actionBar = activity.supportActionBar
         return view
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        swipeRefresh.setOnRefreshListener{
+            loadMemes()
+            swipeRefresh.isRefreshing=false
+        }
+        super.onActivityCreated(savedInstanceState)
     }
 
     override fun onResume() {

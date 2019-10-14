@@ -43,6 +43,7 @@ class ProfileFragment : Fragment() {
         return view
     }
 
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         getUserData()
         super.onActivityCreated(savedInstanceState)
