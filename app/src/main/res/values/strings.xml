@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">SurfApp</string>
+    <string name="nickname">LittleHallCat</string>
+    <string name="main_title">Популярные мемы</string>
+    <string name="search_hint">Поиск</string>
+    <string name="login_error">Вы ввели неверные данные.\nПопробуйте ещё раз</string>
+    <string name="connection_error">Отсутствует интернет-соединение.\nПопробуйте позже</string>
+    <string name="load_error">Не удалось загрузить ленту\nОбновите экран или попробуйте позже.</string>
+    <string name="Create">Создать</string>
 </resources>
