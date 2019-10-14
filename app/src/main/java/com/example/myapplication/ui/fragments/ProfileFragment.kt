@@ -39,6 +39,4 @@ class ProfileFragment : Fragment() {
         return view
     }
 
-    //TODO("Надо заполнить данными о пользователе, данные должны быть в SharedPreferences")
-
 }

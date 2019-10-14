@@ -20,6 +20,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.myapplication.R
 
 
@@ -47,6 +48,7 @@ class FeedFragment : Fragment(), Callback<List<MemeDto>>, ChangeListener {
         retainInstance = true
     }
 
+    //TODO("Тулбары не работают")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         retainInstance=true
         val view = inflater.inflate(R.layout.fragment_feed, container, false)
@@ -55,6 +57,14 @@ class FeedFragment : Fragment(), Callback<List<MemeDto>>, ChangeListener {
         activity!!.setSupportActionBar(toolbar)
         val actionBar = activity.supportActionBar
         return view
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        swipeRefresh.setOnRefreshListener{
+            loadMemes()
+            swipeRefresh.isRefreshing=false
+        }
+        super.onActivityCreated(savedInstanceState)
     }
 
     override fun onResume() {
@@ -92,9 +102,10 @@ class FeedFragment : Fragment(), Callback<List<MemeDto>>, ChangeListener {
         }
     }
 
+    //TODO("Тут крашится")
     private fun showSnackBar(){
-        val snackBar = Snackbar.make(loginLayout, com.example.myapplication.R.string.connection_error, Snackbar.LENGTH_SHORT)
-        snackBar.view.setBackgroundColor(resources.getColor(com.example.myapplication.R.color.snackbg))
+        val snackBar = Snackbar.make(loginLayout, R.string.connection_error, Snackbar.LENGTH_SHORT)
+        snackBar.view.setBackgroundColor(resources.getColor(R.color.snackbg))
         snackBar.setActionTextColor(Color.WHITE)
         snackBar.show()
     }
