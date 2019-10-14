@@ -39,8 +39,6 @@ class FeedFragment : Fragment(), Callback<List<MemeDto>>, ChangeListener {
     }
 
     lateinit var memeAdapter : MemeAdapter
-    lateinit var rootView : View
-    lateinit var toolbar : Toolbar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,6 +49,7 @@ class FeedFragment : Fragment(), Callback<List<MemeDto>>, ChangeListener {
     //TODO("Тулбары не работают")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         retainInstance=true
+
         val view = inflater.inflate(R.layout.fragment_feed, container, false)
         val toolbar = view.findViewById(R.id.mainToolbar) as? Toolbar
         val activity = activity as AppCompatActivity?

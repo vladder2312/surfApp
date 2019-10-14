@@ -1,5 +1,7 @@
 package com.example.myapplication.ui.fragments
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -19,6 +21,8 @@ import retrofit2.Response
 
 class ProfileFragment : Fragment() {
 
+    private lateinit var userData : SharedPreferences
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
@@ -37,6 +41,18 @@ class ProfileFragment : Fragment() {
         activity!!.setSupportActionBar(toolbar)
         val actionBar = activity.supportActionBar
         return view
+    }
+
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        getUserData()
+        super.onActivityCreated(savedInstanceState)
+    }
+
+    private fun getUserData(){
+        userData = activity?.getSharedPreferences("UserData", Context.MODE_PRIVATE) ?: return
+        profile_nickname.text = userData.getString("UserName","Username")
+        profile_description.text = userData.getString("UserDescription","Description")
     }
 
 }
