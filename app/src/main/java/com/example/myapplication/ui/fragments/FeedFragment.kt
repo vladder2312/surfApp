@@ -1,5 +1,6 @@
 package com.example.myapplication.ui.fragments
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
@@ -7,24 +8,23 @@ import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.example.myapplication.adapters.ChangeListener
-import com.example.myapplication.adapters.MemeAdapter
-import com.example.myapplication.models.MemeDto
-import com.example.myapplication.retrofit.RetrofitClient
+import com.example.myapplication.data.adapters.ChangeListener
+import com.example.myapplication.data.adapters.MemeAdapter
+import com.example.myapplication.data.models.MemeDto
+import com.example.myapplication.data.retrofit.RetrofitClient
 import com.example.myapplication.ui.activities.MemeDetailsActivity
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.fragment_feed.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.myapplication.R
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
+import kotlinx.android.synthetic.main.activity_main.*
+import java.util.concurrent.TimeUnit
 
 
-class FeedFragment : Fragment(), Callback<List<MemeDto>>, ChangeListener {
+class FeedFragment : Fragment(), ChangeListener {
 
     override fun sourceChanged(position: Int) {
         Log.d(tag,"from feed = ${memeAdapter[position]}")
@@ -58,24 +58,33 @@ class FeedFragment : Fragment(), Callback<List<MemeDto>>, ChangeListener {
         return view
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        loadMemes()
         swipeRefresh.setOnRefreshListener{
             loadMemes()
             swipeRefresh.isRefreshing=false
         }
-        super.onActivityCreated(savedInstanceState)
-    }
-
-    override fun onResume() {
-        super.onResume()
-        loadMemes()
     }
 
     private fun loadMemes() {
         faded.alpha=0F
         loadPB.visibility=View.VISIBLE
-        val call = RetrofitClient.memesService.getMemes()
-        call.enqueue(this)
+        val call = RetrofitClient.memesService
+            .getMemes()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .timeout(5,TimeUnit.SECONDS)
+            .subscribe({
+                val memes = it
+                error.visibility=View.INVISIBLE
+                if (memes != null) {
+                    initRecyclerView(memes)
+                }
+            }, {
+                showSnackBar()
+                error.visibility=View.VISIBLE
+            })
     }
 
     private fun initRecyclerView(memes: List<MemeDto>){
@@ -88,24 +97,14 @@ class FeedFragment : Fragment(), Callback<List<MemeDto>>, ChangeListener {
         loadPB.visibility=View.INVISIBLE
     }
 
-    override fun onFailure(call: Call<List<MemeDto>>, t: Throwable) {
-        showSnackBar()
-        error.visibility=View.VISIBLE
-    }
 
-    override fun onResponse(call: Call<List<MemeDto>>, response: Response<List<MemeDto>>) {
-        val memes = response.body()
-        error.visibility=View.INVISIBLE
-        if (memes != null) {
-            initRecyclerView(memes)
-        }
-    }
-
-    //TODO("Тут крашится")
+    //TODO("Не работает")
+    @SuppressLint("ResourceAsColor")
     private fun showSnackBar(){
-        val snackBar = Snackbar.make(loginLayout, R.string.connection_error, Snackbar.LENGTH_SHORT)
-        snackBar.view.setBackgroundColor(resources.getColor(R.color.snackbg))
+        val snackBar = Snackbar.make(fragmentHolder, R.string.connection_error, Snackbar.LENGTH_SHORT)
+        snackBar.view.setBackgroundColor(R.color.snackbg)
         snackBar.setActionTextColor(Color.WHITE)
         snackBar.show()
+        loadPB.visibility=View.INVISIBLE
     }
 }

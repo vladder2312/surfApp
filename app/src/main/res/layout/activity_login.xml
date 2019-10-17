@@ -58,15 +58,17 @@
         <Button
                 android:id="@+id/loginButton"
                 style="@style/button"
-                android:text="Войти" />
+                android:text="@string/LogInBtnText" />
 
+<!--        TODO("ProgressBar такого же цвета как и кнопка")-->
         <ProgressBar
-                android:id="@+id/loader"
-                style="@style/Widget.AppCompat.ProgressBar"
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:translationZ="2dp"
-                android:visibility="invisible" />
+            android:id="@+id/loader"
+            style="@style/Widget.AppCompat.ProgressBar"
+            android:progressDrawable="@drawable/icon_progress_bar"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:translationZ="2dp"
+            android:visibility="invisible" />
     </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

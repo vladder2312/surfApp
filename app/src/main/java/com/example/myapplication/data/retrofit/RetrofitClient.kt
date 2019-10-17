@@ -1,7 +1,7 @@
-package com.example.myapplication.retrofit
+package com.example.myapplication.data.retrofit
 
-import com.example.myapplication.retrofit.services.AuthServiceInterface
-import com.example.myapplication.retrofit.services.MemesServiceInterface
+import com.example.myapplication.data.retrofit.services.AuthServiceInterface
+import com.example.myapplication.data.retrofit.services.MemesServiceInterface
 import com.google.gson.GsonBuilder
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -13,6 +13,7 @@ object RetrofitClient {
 
     var retrofit: Retrofit = Retrofit.Builder()
         .baseUrl("https://demo3161256.mockable.io")
+        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
         .addConverterFactory(GsonConverterFactory.create(gson))
         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
         .build()

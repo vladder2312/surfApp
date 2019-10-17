@@ -7,4 +7,5 @@
     <string name="connection_error">Отсутствует интернет-соединение.\nПопробуйте позже</string>
     <string name="load_error">Не удалось загрузить ленту\nОбновите экран или попробуйте позже.</string>
     <string name="Create">Создать</string>
+    <string name="LogInBtnText">Войти</string>
 </resources>
