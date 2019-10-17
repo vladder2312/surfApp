@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.example.myapplication">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.myapplication">
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+            android:name=".App"
             android:allowBackup="true"
             android:icon="@drawable/surflogo"
             android:label="SurfApp"
             android:roundIcon="@drawable/surflogo"
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
-            android:largeHeap="true">
+            android:largeHeap="true"
+            tools:ignore="GoogleAppIndexingWarning">
+
         <activity android:name="com.example.myapplication.ui.activities.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -18,9 +22,9 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name="com.example.myapplication.ui.activities.LoginActivity"></activity>
-        <activity android:name="com.example.myapplication.ui.activities.MainActivity"></activity>
-        <activity android:name="com.example.myapplication.ui.activities.MemeDetailsActivity" android:noHistory="true"></activity>
+        <activity android:name="com.example.myapplication.ui.activities.LoginActivity"/>
+        <activity android:name="com.example.myapplication.ui.activities.MainActivity"/>
+        <activity android:name="com.example.myapplication.ui.activities.MemeDetailsActivity" android:noHistory="true"/>
 
         <meta-data
                 android:name="preloaded_fonts"

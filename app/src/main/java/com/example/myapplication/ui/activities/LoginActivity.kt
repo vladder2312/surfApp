@@ -8,19 +8,18 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import com.example.myapplication.R
-import com.example.myapplication.models.AuthInfoDto
-import com.example.myapplication.models.LoginUserRequestDto
-import com.example.myapplication.retrofit.RetrofitClient
+import com.example.myapplication.data.models.AuthInfoDto
+import com.example.myapplication.data.models.LoginUserRequestDto
+import com.example.myapplication.data.retrofit.RetrofitClient
 import com.google.android.material.snackbar.Snackbar
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_login.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import java.util.concurrent.TimeUnit
 
-class LoginActivity : AppCompatActivity(), Callback<AuthInfoDto> {
+class LoginActivity : AppCompatActivity() {
 
-    private lateinit var userData : SharedPreferences
-    private val USERFILENAME = "UserData"
+    private lateinit var userData: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,21 +52,24 @@ class LoginActivity : AppCompatActivity(), Callback<AuthInfoDto> {
         loader.visibility = View.VISIBLE
         loginButton.text = ""
         val call = RetrofitClient.authService
-            .authorize(
-                LoginUserRequestDto(
-                    loginText.text.toString(),
-                    passwordText.text.toString()
-                )
-            )
-        call.enqueue(this)
-    }
-
-    override fun onFailure(call: Call<AuthInfoDto>, t: Throwable) {
-        t.printStackTrace()
-        println("here")
-        loader.visibility = View.INVISIBLE
-        loginButton.text = "Войти"
-        showSnackbar()
+            .authorize(LoginUserRequestDto(loginText.text.toString(), passwordText.text.toString()))
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .timeout(4,TimeUnit.SECONDS)
+            .subscribe({
+                var authInfo = it
+                loader.visibility = View.INVISIBLE
+                loginButton.text = "Войти"
+                saveUser(authInfo)
+                var mainIntent = Intent(this, MainActivity::class.java)
+                startActivity(mainIntent)
+            },{
+                it.printStackTrace()
+                println("here")
+                loader.visibility = View.INVISIBLE
+                loginButton.text = "Войти"
+                showSnackbar()
+            })
     }
 
     private fun validateFields() {
@@ -84,33 +86,19 @@ class LoginActivity : AppCompatActivity(), Callback<AuthInfoDto> {
         }
     }
 
-    override fun onResponse(call: Call<AuthInfoDto>, response: Response<AuthInfoDto>) {
-        if (response.isSuccessful) {
-            var authInfo = response.body()
-            println("1:" + authInfo.toString())
-            saveUser(authInfo)
-
-            loader.visibility = View.INVISIBLE
-            loginButton.text = "Войти"
-            var mainIntent = Intent(this, MainActivity::class.java)
-            startActivity(mainIntent)
-        } else {
-            println("2:" + response.errorBody())
-        }
-    }
-
-    private fun saveUser(authInfo: AuthInfoDto?){
-        userData = getSharedPreferences(USERFILENAME, Context.MODE_PRIVATE)
+    private fun saveUser(authInfo: AuthInfoDto?) {
+        userData = getSharedPreferences("UserData", Context.MODE_PRIVATE)
         val editor = userData.edit()
-        editor.putString("AccessToken",authInfo!!.accessToken)
+        editor.putString("AccessToken", authInfo!!.accessToken)
         editor.putInt("UserID", authInfo.userInfo.id.toInt())
         editor.putString("UserName", authInfo.userInfo.username)
         editor.putString("UserFirstName", authInfo.userInfo.firstName)
         editor.putString("UserLastName", authInfo.userInfo.lastName)
-        editor.putString("UserDescription",authInfo.userInfo.userDescription)
+        editor.putString("UserDescription", authInfo.userInfo.userDescription)
         editor.apply()
     }
 
+    //TODO("Не показывается SnackBar")
     private fun showSnackbar() {
         val snackbar = Snackbar.make(loginLayout, R.string.login_error, Snackbar.LENGTH_SHORT)
         snackbar.view.setBackgroundColor(applicationContext.resources.getColor(R.color.snackbg))
