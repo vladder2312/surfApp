@@ -23,7 +23,6 @@ import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.concurrent.TimeUnit
 
-
 class FeedFragment : Fragment(), ChangeListener {
 
     override fun sourceChanged(position: Int) {
@@ -96,7 +95,6 @@ class FeedFragment : Fragment(), ChangeListener {
         faded.alpha=1F
         loadPB.visibility=View.INVISIBLE
     }
-
 
     //TODO("Не работает")
     @SuppressLint("ResourceAsColor")

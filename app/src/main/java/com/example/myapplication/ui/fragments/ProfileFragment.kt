@@ -11,7 +11,6 @@ import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import com.example.myapplication.R
 import kotlinx.android.synthetic.main.fragment_profile.*
-
 class ProfileFragment : Fragment() {
 
     private lateinit var userData : SharedPreferences
