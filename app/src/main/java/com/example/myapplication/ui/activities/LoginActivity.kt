@@ -1,4 +1,4 @@
-package com.example.myapplication.ui.activities
+package com.example.myapplication.ui.authorization
 
 import android.content.Context
 import android.content.Intent
@@ -11,6 +11,7 @@ import com.example.myapplication.R
 import com.example.myapplication.data.models.AuthInfoDto
 import com.example.myapplication.data.models.LoginUserRequestDto
 import com.example.myapplication.data.retrofit.RetrofitClient
+import com.example.myapplication.ui.activities.MainActivity
 import com.google.android.material.snackbar.Snackbar
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -101,7 +102,7 @@ class LoginActivity : AppCompatActivity() {
     //TODO("Не показывается SnackBar")
     private fun showSnackbar() {
         val snackbar = Snackbar.make(loginLayout, R.string.login_error, Snackbar.LENGTH_SHORT)
-        snackbar.view.setBackgroundColor(applicationContext.resources.getColor(R.color.snackbg))
+        snackbar.view.setBackgroundColor(applicationContext.resources.getColor(R.color.colorSnackBar))
         snackbar.setActionTextColor(Color.WHITE)
         snackbar.show()
     }
