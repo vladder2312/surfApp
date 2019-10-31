@@ -1,7 +1,7 @@
-package com.example.myapplication.data.retrofit
+package com.example.myapplication.data.network
 
-import com.example.myapplication.data.retrofit.services.AuthServiceInterface
-import com.example.myapplication.data.retrofit.services.MemesServiceInterface
+import com.example.myapplication.data.network.services.AuthService
+import com.example.myapplication.data.network.services.MemesService
 import com.google.gson.GsonBuilder
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -18,7 +18,7 @@ object RetrofitClient {
         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
         .build()
 
-    var authService = retrofit.create(AuthServiceInterface::class.java)
-    var logoutService = retrofit.create(AuthServiceInterface::class.java)
-    var memesService = retrofit.create(MemesServiceInterface::class.java)
+    var authService = retrofit.create(AuthService::class.java)
+    var logoutService = retrofit.create(AuthService::class.java)
+    var memesService = retrofit.create(MemesService::class.java)
 }

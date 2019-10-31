@@ -7,6 +7,16 @@
     android:background="@color/colorBackground"
     >
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarProfile"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:theme="@style/ProfileToolbarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </androidx.appcompat.widget.Toolbar>
 
     <FrameLayout
         android:id="@+id/profile_image_border"
@@ -14,7 +24,8 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/toolbarProfile">
+
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="match_parent"
@@ -22,7 +33,9 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="7dp"
             app:srcCompat="@drawable/avatar" />
+
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="78dp"

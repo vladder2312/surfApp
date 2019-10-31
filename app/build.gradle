@@ -4,6 +4,8 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'kotlin-kapt'
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.0"
@@ -54,9 +56,18 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
     implementation 'io.reactivex.rxjava2:rxjava:2.2.6'
 
+    //Dagger 2
+    implementation 'com.google.dagger:dagger:2.13'
+
     //Picasso
     implementation 'com.squareup.picasso:picasso:2.71828'
 
-    //Easy Adapter
-    //implementation 'ru.surfstudio.android:easyadapter:1.0.0'
+    ///CircleImageView
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
+
+    //Cicerone
+    implementation 'ru.terrakok.cicerone:cicerone:5.0.0'
+
+    //TextFieldBoxes
+    implementation 'com.github.HITGIF:TextFieldBoxes:1.4.4'
 }

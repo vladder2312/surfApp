@@ -1,4 +1,4 @@
-package com.example.myapplication.data.models
+package com.example.myapplication.data.network.models
 
 data class MemeDto (
     val id : Long,

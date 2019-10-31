@@ -7,7 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
-import com.example.myapplication.data.models.MemeDto
+import com.example.myapplication.data.network.models.MemeDto
 import com.squareup.picasso.Picasso
 import java.text.SimpleDateFormat
 import java.util.Date

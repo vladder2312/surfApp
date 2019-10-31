@@ -20,6 +20,12 @@
         <item name="android:topLeftRadius">4dp</item>
     </style>
 
+    <style name="ToolbarTheme" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:textColorPrimary">@color/colorAccent</item>
+        <item name="android:textColorSecondary">@android:color/white</item>
+        <item name="android:textColor">@color/colorAccent</item>
+    </style>
+
     <style name="textField">
         <item name="android:layout_height">56dp</item>
         <item name="android:layout_marginLeft">16dp</item>
@@ -40,6 +46,13 @@
         <item name="closeIcon">@drawable/icon_close</item>
         <item name="queryHint">@string/search_hint</item>
         <item name="android:imeActionId">6</item>
+    </style>
+
+    <style name="ProfileToolbarTheme" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:textColorPrimary">@color/colorAccent</item>
+        <item name="android:textColorSecondary">@android:color/white</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:colorBackground">@color/colorPrimary</item>
     </style>
 
 </resources>

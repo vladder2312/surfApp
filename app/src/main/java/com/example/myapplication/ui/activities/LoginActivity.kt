@@ -1,4 +1,4 @@
-package com.example.myapplication.ui.authorization
+package com.example.myapplication.ui.activities
 
 import android.content.Context
 import android.content.Intent
@@ -8,10 +8,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import com.example.myapplication.R
-import com.example.myapplication.data.models.AuthInfoDto
-import com.example.myapplication.data.models.LoginUserRequestDto
-import com.example.myapplication.data.retrofit.RetrofitClient
-import com.example.myapplication.ui.activities.MainActivity
+import com.example.myapplication.data.network.models.AuthInfoDto
+import com.example.myapplication.data.network.models.LoginUserRequestDto
+import com.example.myapplication.data.network.RetrofitClient
 import com.google.android.material.snackbar.Snackbar
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers

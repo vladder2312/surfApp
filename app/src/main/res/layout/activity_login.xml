@@ -58,7 +58,7 @@
         <Button
                 android:id="@+id/loginButton"
                 style="@style/button"
-                android:text="@string/LogInBtnText" />
+                android:text="@string/logInBtnText" />
 
 <!--        TODO("ProgressBar такого же цвета как и кнопка")-->
         <ProgressBar

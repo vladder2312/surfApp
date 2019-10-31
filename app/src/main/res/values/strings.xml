@@ -6,6 +6,18 @@
     <string name="login_error">Вы ввели неверные данные.\nПопробуйте ещё раз</string>
     <string name="connection_error">Отсутствует интернет-соединение.\nПопробуйте позже</string>
     <string name="load_error">Не удалось загрузить ленту\nОбновите экран или попробуйте позже.</string>
-    <string name="Create">Создать</string>
-    <string name="LogInBtnText">Войти</string>
+    <string name="create">Создать</string>
+    <string name="createMeme">Создать свой мем</string>
+    <string name="logInBtnText">Войти</string>
+    <string name="create_photo">Сделать фото</string>
+    <string name="from_gallery">Из галереи</string>
+    <string name="default_shared_preferences_key">default_shared_preferences_key</string>
+    <string name="user_token_key">user_token_key</string>
+    <string name="user_id_key">user_id_key</string>
+    <string name="user_name_key">user_name_key</string>
+    <string name="user_first_name_key">user_first_name_key</string>
+    <string name="user_last_name_key">user_last_name_key</string>
+    <string name="user_description_key">user_description_key</string>
+    <string name="about_app">О приложении</string>
+    <string name="exit">Выйти</string>
 </resources>

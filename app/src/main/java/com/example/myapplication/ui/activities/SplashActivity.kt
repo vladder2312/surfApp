@@ -3,7 +3,6 @@ package com.example.myapplication.ui.activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.WindowManager
 import com.example.myapplication.R
 import java.util.*
 

@@ -10,8 +10,8 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.myapplication.data.adapters.ChangeListener
 import com.example.myapplication.data.adapters.MemeAdapter
-import com.example.myapplication.data.models.MemeDto
-import com.example.myapplication.data.retrofit.RetrofitClient
+import com.example.myapplication.data.network.models.MemeDto
+import com.example.myapplication.data.network.RetrofitClient
 import com.example.myapplication.ui.activities.MemeDetailsActivity
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_feed.*
@@ -49,13 +49,7 @@ class FeedFragment : Fragment(), ChangeListener {
     //TODO("Тулбары не работают")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         retainInstance=true
-
-        val view = inflater.inflate(R.layout.fragment_feed, container, false)
-        val toolbar = view.findViewById(R.id.mainToolbar) as? Toolbar
-        val activity = activity as AppCompatActivity?
-        activity!!.setSupportActionBar(toolbar)
-        val actionBar = activity.supportActionBar
-        return view
+        return inflater.inflate(R.layout.fragment_feed, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -98,11 +92,11 @@ class FeedFragment : Fragment(), ChangeListener {
     }
 
 
-    //TODO("Не работает")
+    //TODO("Не показывается SnackBar")
     @SuppressLint("ResourceAsColor")
     private fun showSnackBar(){
         val snackBar = Snackbar.make(fragmentHolder, R.string.connection_error, Snackbar.LENGTH_SHORT)
-        snackBar.view.setBackgroundColor(R.color.snackbg)
+        snackBar.view.setBackgroundColor(R.color.colorSnackBar)
         snackBar.setActionTextColor(Color.WHITE)
         snackBar.show()
         loadPB.visibility=View.INVISIBLE
